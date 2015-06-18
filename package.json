@@ -10,12 +10,11 @@
     "url": "https://github.com/mattdesl"
   },
   "dependencies": {
-    "async": "^1.2.1",
+    "async-each": "^0.1.6",
     "events": "^1.0.2",
     "img": "^1.0.0"
   },
   "devDependencies": {
-    "async-each": "^0.1.6",
     "baboon-image-uri": "^1.0.1",
     "browserify": "^10.2.4",
     "faucet": "0.0.1",
