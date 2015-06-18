@@ -1,0 +1,46 @@
+{
+  "name": "async-image-loader",
+  "version": "1.0.0",
+  "description": "a small utility to load image tiles in parallel",
+  "main": "index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Matt DesLauriers",
+    "email": "dave.des@gmail.com",
+    "url": "https://github.com/mattdesl"
+  },
+  "dependencies": {
+    "async": "^1.2.1",
+    "events": "^1.0.2",
+    "img": "^1.0.0"
+  },
+  "devDependencies": {
+    "async-each": "^0.1.6",
+    "baboon-image-uri": "^1.0.1",
+    "browserify": "^10.2.4",
+    "faucet": "0.0.1",
+    "tape": "^4.0.0"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "async",
+    "image",
+    "loader",
+    "url",
+    "images",
+    "tile",
+    "tiles",
+    "sprite",
+    "sprites"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Jam3/async-image-loader.git"
+  },
+  "homepage": "https://github.com/Jam3/async-image-loader",
+  "bugs": {
+    "url": "https://github.com/Jam3/async-image-loader/issues"
+  }
+}
