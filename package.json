@@ -1,6 +1,6 @@
 {
   "name": "async-image-loader",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "a small utility to load image tiles in parallel",
   "main": "index.js",
   "license": "MIT",
