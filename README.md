@@ -2,7 +2,7 @@
 
 [![unstable](http://badges.github.io/stability-badges/dist/unstable.svg)](http://github.com/badges/stability-badges)
 
-A small utility to load images asynchronously, providing `progress` event and skipping images that could not be loaded. 
+A small utility to load images asynchronously, with `progress` events and simple error handling.
 
 ## Examples
 
