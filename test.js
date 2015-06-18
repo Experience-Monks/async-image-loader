@@ -10,6 +10,12 @@ test('should load images', function (t) {
   loader(tiles, { crossOrigin: 'Anonymous' }, function (images) {
     t.deepEqual(images[1], null)
     t.ok(images[0] instanceof HTMLImageElement, 'is image')
+
+    if (window.close) {
+      setTimeout(function () {
+        window.close()
+      }, 500)
+    }
   })
     .on('not-found', function (item) {
       t.equal(item, 'nothing.png', 'got nothing.png as not found')

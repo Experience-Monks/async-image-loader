@@ -22,7 +22,7 @@
     "tape": "^4.0.0"
   },
   "scripts": {
-    "test": "node test.js"
+    "test": "browserify test.js | smokestack | faucet"
   },
   "keywords": [
     "async",
