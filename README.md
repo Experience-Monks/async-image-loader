@@ -1,6 +1,6 @@
 # async-image-loader
 
-[![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
+[![unstable](http://badges.github.io/stability-badges/dist/unstable.svg)](http://github.com/badges/stability-badges)
 
 A small utility to load images asynchronously, providing `progress` event and skipping images that could not be loaded. 
 
