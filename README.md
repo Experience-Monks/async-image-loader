@@ -68,7 +68,7 @@ On complete, `cb` is called with the `images` array as the first paramter, which
 
 #### `emitter.on('progress', fn)`
 
-Every time an image is loaded, `progress` is emitted with the following `event` parameter:
+After each resource is loaded, or failed, a `progress` is emitted with the following `event` parameter:
 
 ```js
 {
@@ -78,6 +78,8 @@ Every time an image is loaded, `progress` is emitted with the following `event` 
   tile:  String|Object // the element provided in `tiles` input
 }
 ```
+
+Since the loading is done in parallel, this is not called in the same order as the input. This is called regardless of whether the image loaded successfully, which is why `ev.image` might be null.
 
 #### `emitter.on('not-found', fn)`
 
