@@ -22,7 +22,7 @@ load(images, function (images) {
 })
 ```
 
-A more complex example, where images are "tile" objects holding other data.
+Here is a more complex example, where each "tile" holds some data in an object. The same object will be passed to `"progress"` events as `ev.data`.
 
 ```js
 var loadTiles = require('async-image-loader')
@@ -41,7 +41,7 @@ loadTiles(tiles, {
   console.log("Progress: ", ev.count / ev.total)
   
   // stitch the image onto canvas
-  context.drawImage(ev.image, ev.tile.x, ev.tile.y)
+  context.drawImage(ev.image, ev.data.x, ev.data.y)
 })
 ```
 
@@ -55,35 +55,39 @@ npm install async-image-loader --save
 
 [![NPM](https://nodei.co/npm/async-image-loader.png)](https://www.npmjs.com/package/async-image-loader)
 
-#### `emitter = loader(tiles, [opt], [cb])`
+#### `emitter = loader(urls, [opt], [cb])`
 
-Starts loading the specified `tiles`, which is an array of URLs and/or objects with `url` field.
+Starts loading the specified `urls`. Elements in the `urls` array can either be strings, or objects containing `{ url }`.
 
 The `opt` settings can be:
 
 - `crossOrigin` the CORS setting for image loading (default undefined)
 - `defaultImage` the fallback Image to use when a load 404s (default null) 
 
-On complete, `cb` is called with the `images` array as the first paramter, which is in the same order as they were specified in the input. Each element is an HTMLImageElement, or the value of `defaultImage` if that URL couldn't be found.
+On complete, `cb` is called with an array of HTMLImageObjects as the first paramter (same order as input). Any images not found will be replaced with `defaultImage`, or null.
 
 #### `emitter.on('progress', fn)`
 
-After each resource is loaded, or failed, a `progress` is emitted with the following `event` parameter:
+Each resource will trigger a `progress` event when it completes loading, or when it fails. The function is passed an `event` parameter:
 
 ```js
 {
   total: Number        // total # of images,  N
   count: Number        // # of loaded images, [ 1 .. N ]
   image: Image         // loaded image element, or defaultImage
-  tile:  String|Object // the element provided in `tiles` input
+  data:  String|Object // the value provided in the input array
 }
 ```
 
-Since the loading is done in parallel, this is not called in the same order as the input. This is called regardless of whether the image loaded successfully, which is why `ev.image` might be null.
+Since the loading is done in parallel, the order is not the same as the input. This event will be triggered regardless of whether the `image` resource loaded successfully, so `image` may be null.
+
+Here, `ev.data` is the same element that was given in the input array, either a string URL or the object containing `{ url }`.
 
 #### `emitter.on('not-found', fn)`
 
-URLs or tile objects that 404 or cannot be loaded will emit this event before `progress`, and will pass the `tile` as the first parameter (i.e. the URL or element from your array input).
+Emitted for each resource that cannot be loaded (i.e. 404). The passed value is the `data` that was unable to load; either a String or `{ url }` object depending on what was passed to input.
+
+This is emitted before the `progress` event.
 
 ## License
 

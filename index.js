@@ -4,7 +4,7 @@ var Emitter = require('events').EventEmitter
 
 module.exports = asyncImages
 
-function asyncImages (tiles, opt, cb) {
+function asyncImages (data, opt, cb) {
   if (typeof opt === 'function') {
     cb = opt
     opt = {}
@@ -18,8 +18,8 @@ function asyncImages (tiles, opt, cb) {
 
   function load () {
     var count = 0
-    var total = tiles.length
-    each(tiles, function (item, next) {
+    var total = data.length
+    each(data, function (item, next) {
       var url = typeof item === 'string' ? item : item.url
       loadImage(url, opt, function (err, image) {
         if (err) {
@@ -31,7 +31,7 @@ function asyncImages (tiles, opt, cb) {
           count: ++count,
           total: total,
           image: image,
-          tile: item
+          data: item
         })
 
         next(null, image)
