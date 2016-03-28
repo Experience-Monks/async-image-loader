@@ -1,5 +1,5 @@
 var each = require('async-each')
-var loadImage = require('img')
+var loadImage = require('load-img')
 var Emitter = require('events').EventEmitter
 
 module.exports = asyncImages
